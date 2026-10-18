@@ -11,66 +11,66 @@
 
 ## 1. Project Overview
 
-This project turns raw retail sales data into a clean data model and an interactive Power BI dashboard. The data is imported and cleaned in Power Query, modeled as a star schema, analysed with DAX measures, and presented in a dark-themed dashboard with KPI cards, charts and slicers. The goal is to help a business understand **what sells, who buys, where profit comes from, and where money is lost.**
+This project turns raw retail sales data into a clean data model and an interactive Power BI dashboard. The data is imported and cleaned in Power Query, modeled as a star schema, analysed with DAX measures and presented in a dark-themed dashboard with KPI cards, charts and slicers. The goal is to show **what sells, who buys, where profit comes from and where money is lost.**
 
 ---
 
-## 2. Dashboard Preview
+## 2. Final Dashboard
 
-![Dashboard](18_dashboard.png)
+<img src="18_dashboard.png" alt="Dashboard" width="900">
 
 ### Filtered view (Year = 2017, Region = West)
 
-![Filtered Dashboard](19_filtered.png)
+<img src="19_filtered.png" alt="Filtered Dashboard" width="900">
 
 All cards and visuals update together when a slicer value is selected.
 
 ---
 
-## 3. Dataset
+## 3. Skills and Components Used
 
-The Superstore data was split into three CSV files to build a proper star schema.
-
-| Table | Type | Main columns |
+| # | Skill / Component | Where used |
 |---|---|---|
-| **Orders** | Fact | Order ID, Order Date, Ship Date, Ship Mode, Customer ID, Region, City, State, Product ID, Sales, Quantity, Discount, Profit |
-| **Customers** | Dimension | Customer ID, Customer Name, Segment |
-| **Products** | Dimension | Product ID, Category, Sub-Category, Product Name |
-| **Calendar** | Dimension (DAX) | Date, Year, MonthNo, Month |
+| 1 | Data Import (Get Data > Text/CSV) | Task 1 |
+| 2 | Power Query (cleaning, data types, custom column) | Task 2 |
+| 3 | Data Modeling (star schema, relationships) | Task 3 |
+| 4 | DAX (measures, calculated column, calculated table) | Task 4 |
+| 5 | KPI Cards | Task 6 |
+| 6 | Column Chart | Task 5 |
+| 7 | Line Chart | Task 5 |
+| 8 | Donut Chart | Task 5 |
+| 9 | Bar Chart | Task 5 |
+| 10 | Table Visual | Task 5 |
+| 11 | Slicers (Year, Region) | Task 6 |
+| 12 | Dashboard formatting (dark theme, layout) | Task 6 |
+| 13 | Insights and Recommendations | Task 7 |
 
 ---
 
-## 4. Work Done (Task by Task)
+## 4. Work Done (Skill by Skill, with Screenshots)
 
-### Task 1: Introduction & Data Import
-- Power BI Desktop was used to import `Orders_fixed.csv`, `Customers.csv` and `Products.csv` (Home > Get data > Text/CSV).
-- The files were opened in Power Query using **Transform Data**.
+### 4.1 Data Import (Task 1)
+Imported `Orders_fixed.csv`, `Customers.csv` and `Products.csv` using **Home > Get data > Text/CSV**, then opened them with **Transform Data**.
 
-**Screenshots:**
+<img src="1_orders.png" alt="Orders" width="700">
+<img src="2_customers.png" alt="Customers" width="700">
+<img src="3_products.png" alt="Products" width="700">
 
-![Orders](1_orders.png)
-![Customers](2_customers.png)
-![Products](3_products.png)
-
-
-### Task 2: Data Cleaning (Power Query)
+### 4.2 Data Cleaning in Power Query (Task 2)
 - Used **Use First Row as Headers** on Customers and Products.
 - Fixed data types (dates, decimals, whole numbers, text).
-- Fixed the date locale problem: dates in M/D/YYYY were read wrongly, so the dates were loaded in ISO format (YYYY-MM-DD).
+- Fixed the date locale problem: M/D/YYYY dates were read wrongly, so dates were loaded in ISO format (YYYY-MM-DD).
 - Checked **Column quality / Column profile** for errors, empty values and duplicates.
 - Removed duplicates and unnecessary columns.
-- Added a custom column: `ShipDays = Duration.Days([Ship Date] - [Order Date])`.
+- Added custom column `ShipDays = Duration.Days([Ship Date] - [Order Date])`.
 - Clicked **Close & Apply**.
 
-**Screenshots:**
+<img src="4_quality.png" alt="Column quality" width="700">
+<img src="5_steps.png" alt="Applied steps" width="700">
+<img src="8_table_view.png" alt="Table view" width="700">
 
-![Column quality](4_quality.png)
-![Applied steps](5_steps.png)
-![Table view](8_table_view.png)
-
-
-### Task 3: Data Modeling
-Star schema with Orders as the fact table. All relationships are **Many-to-one** with **single direction** filtering.
+### 4.3 Data Modeling (Task 3)
+Star schema with **Orders** as the fact table. All relationships are **Many-to-one** with **single direction** filtering.
 
 | From (Many) | To (One) |
 |---|---|
@@ -78,12 +78,9 @@ Star schema with Orders as the fact table. All relationships are **Many-to-one**
 | Orders[Product ID] | Products[Product ID] |
 | Orders[Order Date] | Calendar[Date] |
 
-**Screenshots:**
+<img src="9_model.png" alt="Data model" width="700">
 
-![Data model](9_model.png)
-
-
-### Task 4: DAX Measures & Calculated Columns
+### 4.4 DAX Measures and Calculated Columns (Task 4)
 
 ```DAX
 Calendar = ADDCOLUMNS(
@@ -115,38 +112,46 @@ Profit Status  = IF(Orders[Profit] < 0, "Loss", "Profit")   // calculated column
 | Max Sale | 22,638.48 |
 | Min Sale | 0.44 |
 
-**Screenshots:**
+<img src="10_measure.png" alt="Measures" width="700">
 
-![Measures](10_measure.png)
-![KPI cards](11_cards.png)
+### 4.5 KPI Cards
+Four cards: Total Sales, Total Profit, Profit % and Total Orders.
 
+<img src="11_cards.png" alt="KPI cards" width="700">
 
-### Task 5: Visualizations
-| Visual | Fields | What it shows |
-|---|---|---|
-| Column chart | Category, Total Sales | Sales by product category |
-| Line chart | Month, Total Sales | Monthly sales trend |
-| Donut chart | Segment, Total Sales | Share of each customer segment |
-| Bar chart | Sub-Category, Total Profit | Profit by sub-category |
-| Table | Product Name, Total Sales, Total Profit | Top products by sales |
+### 4.6 Column Chart: Sales by Category
+Fields: Category, Total Sales. Shows which category sells the most.
 
-**Screenshots:**
+<img src="13_column.png" alt="Column chart" width="700">
 
-![Column chart](13_column.png)
-![Line chart](14_line.png)
-![Donut chart](15_donut.png)
-![Bar chart](17_bar.png)
-![Table](16_table.png)
+### 4.7 Line Chart: Monthly Sales Trend
+Fields: Month, Total Sales. Shows how sales change across months.
 
+<img src="14_line.png" alt="Line chart" width="700">
 
-### Task 6: Interactive Dashboard
-- **4 KPI cards:** Total Sales, Total Profit, Profit %, Total Orders.
-- **5 visuals:** Sales by Category, Monthly Sales Trend, Sales by Customer Segment, Profit by Sub-Category, Top Products table.
-- **2 slicers:** Year and Region.
-- Dark theme with a consistent palette (teal, blue, orange) for easy reading.
-- Cross-filtering: clicking a bar or donut slice filters the other visuals.
+### 4.8 Donut Chart: Sales by Customer Segment
+Fields: Segment, Total Sales. Shows the share of each customer segment.
 
-### Task 7: Insights & Recommendations
+<img src="15_donut.png" alt="Donut chart" width="700">
+
+### 4.9 Bar Chart: Profit by Sub-Category
+Fields: Sub-Category, Total Profit. Shows which sub-categories give the most profit.
+
+<img src="17_bar.png" alt="Bar chart" width="700">
+
+### 4.10 Table: Top Products
+Fields: Product Name, Total Sales, Total Profit. Sorted by Total Sales (high to low).
+
+<img src="16_table.png" alt="Table" width="700">
+
+### 4.11 Slicers and Interactive Dashboard (Task 6)
+Two slicers (**Year** and **Region**) control all cards and visuals. Cross-filtering also works by clicking a bar or a donut slice.
+
+<img src="19_filtered.png" alt="Filtered dashboard" width="900">
+
+---
+
+## 5. Insights and Recommendations (Task 7)
 
 **Key insights**
 1. **Consumer** is the largest segment with about **50.56%** of sales (1.16M). Corporate has 30.74% and Home Office 18.7%.
@@ -164,19 +169,19 @@ Profit Status  = IF(Orders[Profit] < 0, "Loss", "Profit")   // calculated column
 
 ---
 
-## 5. Repository Contents
+## 6. Repository Contents
 
 | File / Folder | Description |
 |---|---|
 | `Week5_PowerBI_Gajanan.pdf` | Full report with all tasks and screenshots (Task 1 to 7) |
 | `Week5_PowerBI.pbix` | Power BI project file (open with Power BI Desktop) |
 | `Data/` | Dataset files: `Orders_fixed.csv`, `Customers.csv`, `Products.csv` |
-| `1_orders.png` to `19_filtered.png` | Step-by-step screenshots of the work |
+| `1_orders.png` ... `19_filtered.png` | Step-by-step screenshots |
 | `README.md` | This file |
 
 ---
 
-## 6. How to Open the Project
+## 7. How to Open the Project
 
 1. Install **Power BI Desktop** (free, Windows).
 2. Download `Week5_PowerBI.pbix` from this repository.
@@ -185,6 +190,6 @@ Profit Status  = IF(Orders[Profit] < 0, "Loss", "Profit")   // calculated column
 
 ---
 
-## 7. Conclusion
+## 8. Conclusion
 
 Power BI helped to convert raw sales data into a clean model and an interactive dashboard. Sales, profit, customers and products can now be seen in one place, which supports better business decisions.
