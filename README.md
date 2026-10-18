@@ -17,11 +17,11 @@ This project turns raw retail sales data into a clean data model and an interact
 
 ## 2. Final Dashboard
 
-<img src="18_dashboard.png" alt="Dashboard" width="900">
+<img src="18_dashboard.PNG" alt="Dashboard" width="900">
 
 ### Filtered view (Year = 2017, Region = West)
 
-<img src="19_filtered.png" alt="Filtered Dashboard" width="900">
+<img src="19_filtered.PNG" alt="Filtered Dashboard" width="900">
 
 All cards and visuals update together when a slicer value is selected.
 
@@ -52,9 +52,9 @@ All cards and visuals update together when a slicer value is selected.
 ### 4.1 Data Import (Task 1)
 Imported `Orders_fixed.csv`, `Customers.csv` and `Products.csv` using **Home > Get data > Text/CSV**, then opened them with **Transform Data**.
 
-<img src="1_orders.png" alt="Orders" width="700">
-<img src="2_customers.png" alt="Customers" width="700">
-<img src="3_products.png" alt="Products" width="700">
+<img src="1_orders.PNG" alt="Orders" width="700">
+<img src="2_customers.PNG" alt="Customers" width="700">
+<img src="3_products.PNG" alt="Products" width="700">
 
 ### 4.2 Data Cleaning in Power Query (Task 2)
 - Used **Use First Row as Headers** on Customers and Products.
@@ -65,9 +65,9 @@ Imported `Orders_fixed.csv`, `Customers.csv` and `Products.csv` using **Home > G
 - Added custom column `ShipDays = Duration.Days([Ship Date] - [Order Date])`.
 - Clicked **Close & Apply**.
 
-<img src="4_quality.png" alt="Column quality" width="700">
-<img src="5_steps.png" alt="Applied steps" width="700">
-<img src="8_table_view.png" alt="Table view" width="700">
+<img src="4_quality.PNG" alt="Column quality" width="700">
+<img src="5_steps.PNG" alt="Applied steps" width="700">
+<img src="8_table_view.PNG" alt="Table view" width="700">
 
 ### 4.3 Data Modeling (Task 3)
 Star schema with **Orders** as the fact table. All relationships are **Many-to-one** with **single direction** filtering.
@@ -78,7 +78,7 @@ Star schema with **Orders** as the fact table. All relationships are **Many-to-o
 | Orders[Product ID] | Products[Product ID] |
 | Orders[Order Date] | Calendar[Date] |
 
-<img src="9_model.png" alt="Data model" width="700">
+<img src="9_model.PNG" alt="Data model" width="700">
 
 ### 4.4 DAX Measures and Calculated Columns (Task 4)
 
@@ -112,42 +112,42 @@ Profit Status  = IF(Orders[Profit] < 0, "Loss", "Profit")   // calculated column
 | Max Sale | 22,638.48 |
 | Min Sale | 0.44 |
 
-<img src="10_measure.png" alt="Measures" width="700">
+<img src="10_measure.PNG" alt="Measures" width="700">
 
 ### 4.5 KPI Cards
 Four cards: Total Sales, Total Profit, Profit % and Total Orders.
 
-<img src="11_cards.png" alt="KPI cards" width="700">
+<img src="11_cards.PNG" alt="KPI cards" width="700">
 
 ### 4.6 Column Chart: Sales by Category
 Fields: Category, Total Sales. Shows which category sells the most.
 
-<img src="13_column.png" alt="Column chart" width="700">
+<img src="13_column.PNG" alt="Column chart" width="700">
 
 ### 4.7 Line Chart: Monthly Sales Trend
 Fields: Month, Total Sales. Shows how sales change across months.
 
-<img src="14_line.png" alt="Line chart" width="700">
+<img src="14_line.PNG" alt="Line chart" width="700">
 
 ### 4.8 Donut Chart: Sales by Customer Segment
 Fields: Segment, Total Sales. Shows the share of each customer segment.
 
-<img src="15_donut.png" alt="Donut chart" width="700">
+<img src="15_donut.PNG" alt="Donut chart" width="700">
 
 ### 4.9 Bar Chart: Profit by Sub-Category
 Fields: Sub-Category, Total Profit. Shows which sub-categories give the most profit.
 
-<img src="17_bar.png" alt="Bar chart" width="700">
+<img src="17_bar.PNG" alt="Bar chart" width="700">
 
 ### 4.10 Table: Top Products
 Fields: Product Name, Total Sales, Total Profit. Sorted by Total Sales (high to low).
 
-<img src="16_table.png" alt="Table" width="700">
+<img src="16_table.PNG" alt="Table" width="700">
 
 ### 4.11 Slicers and Interactive Dashboard (Task 6)
 Two slicers (**Year** and **Region**) control all cards and visuals. Cross-filtering also works by clicking a bar or a donut slice.
 
-<img src="19_filtered.png" alt="Filtered dashboard" width="900">
+<img src="19_filtered.PNG" alt="Filtered dashboard" width="900">
 
 ---
 
@@ -174,9 +174,9 @@ Two slicers (**Year** and **Region**) control all cards and visuals. Cross-filte
 | File / Folder | Description |
 |---|---|
 | `Week5_PowerBI_Gajanan.pdf` | Full report with all tasks and screenshots (Task 1 to 7) |
-| `Week5_PowerBI.pbix` | Power BI project file (open with Power BI Desktop) |
-| `Data/` | Dataset files: `Orders_fixed.csv`, `Customers.csv`, `Products.csv` |
-| `1_orders.png` ... `19_filtered.png` | Step-by-step screenshots |
+| `Week5_PowerBI_Gajanan__Raje.pbix` | Power BI project file (open with Power BI Desktop) |
+| `Orders_fixed.csv`, `Customers.csv`, `Products.csv` | Dataset files |
+| `1_orders.PNG` ... `19_filtered.PNG` | Step-by-step screenshots |
 | `README.md` | This file |
 
 ---
@@ -184,8 +184,8 @@ Two slicers (**Year** and **Region**) control all cards and visuals. Cross-filte
 ## 7. How to Open the Project
 
 1. Install **Power BI Desktop** (free, Windows).
-2. Download `Week5_PowerBI.pbix` from this repository.
-3. Open it in Power BI Desktop. If asked, update the data source path to the files in the `Data/` folder (Home > Transform data > Data source settings).
+2. Download `Week5_PowerBI_Gajanan__Raje.pbix` from this repository.
+3. Open it in Power BI Desktop. If asked, update the data source path to the downloaded CSV files (Home > Transform data > Data source settings).
 4. Use the **Year** and **Region** slicers to explore the dashboard.
 
 ---
