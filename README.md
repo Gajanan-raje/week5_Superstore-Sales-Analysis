@@ -17,11 +17,11 @@ This project turns raw retail sales data into a clean data model and an interact
 
 ## 2. Dashboard Preview
 
-![Dashboard](Screenshots/18_dashboard.png)
+![Dashboard](18_dashboard.png)
 
 ### Filtered view (Year = 2017, Region = West)
 
-![Filtered Dashboard](Screenshots/19_filtered.png)
+![Filtered Dashboard](19_filtered.png)
 
 All cards and visuals update together when a slicer value is selected.
 
@@ -46,6 +46,13 @@ The Superstore data was split into three CSV files to build a proper star schema
 - Power BI Desktop was used to import `Orders_fixed.csv`, `Customers.csv` and `Products.csv` (Home > Get data > Text/CSV).
 - The files were opened in Power Query using **Transform Data**.
 
+**Screenshots:**
+
+![Orders](1_orders.png)
+![Customers](2_customers.png)
+![Products](3_products.png)
+
+
 ### Task 2: Data Cleaning (Power Query)
 - Used **Use First Row as Headers** on Customers and Products.
 - Fixed data types (dates, decimals, whole numbers, text).
@@ -55,6 +62,13 @@ The Superstore data was split into three CSV files to build a proper star schema
 - Added a custom column: `ShipDays = Duration.Days([Ship Date] - [Order Date])`.
 - Clicked **Close & Apply**.
 
+**Screenshots:**
+
+![Column quality](4_quality.png)
+![Applied steps](5_steps.png)
+![Table view](8_table_view.png)
+
+
 ### Task 3: Data Modeling
 Star schema with Orders as the fact table. All relationships are **Many-to-one** with **single direction** filtering.
 
@@ -63,6 +77,11 @@ Star schema with Orders as the fact table. All relationships are **Many-to-one**
 | Orders[Customer ID] | Customers[Customer ID] |
 | Orders[Product ID] | Products[Product ID] |
 | Orders[Order Date] | Calendar[Date] |
+
+**Screenshots:**
+
+![Data model](9_model.png)
+
 
 ### Task 4: DAX Measures & Calculated Columns
 
@@ -96,6 +115,12 @@ Profit Status  = IF(Orders[Profit] < 0, "Loss", "Profit")   // calculated column
 | Max Sale | 22,638.48 |
 | Min Sale | 0.44 |
 
+**Screenshots:**
+
+![Measures](10_measure.png)
+![KPI cards](11_cards.png)
+
+
 ### Task 5: Visualizations
 | Visual | Fields | What it shows |
 |---|---|---|
@@ -104,6 +129,15 @@ Profit Status  = IF(Orders[Profit] < 0, "Loss", "Profit")   // calculated column
 | Donut chart | Segment, Total Sales | Share of each customer segment |
 | Bar chart | Sub-Category, Total Profit | Profit by sub-category |
 | Table | Product Name, Total Sales, Total Profit | Top products by sales |
+
+**Screenshots:**
+
+![Column chart](13_column.png)
+![Line chart](14_line.png)
+![Donut chart](15_donut.png)
+![Bar chart](17_bar.png)
+![Table](16_table.png)
+
 
 ### Task 6: Interactive Dashboard
 - **4 KPI cards:** Total Sales, Total Profit, Profit %, Total Orders.
@@ -137,7 +171,7 @@ Profit Status  = IF(Orders[Profit] < 0, "Loss", "Profit")   // calculated column
 | `Week5_PowerBI_Gajanan.pdf` | Full report with all tasks and screenshots (Task 1 to 7) |
 | `Week5_PowerBI.pbix` | Power BI project file (open with Power BI Desktop) |
 | `Data/` | Dataset files: `Orders_fixed.csv`, `Customers.csv`, `Products.csv` |
-| `Screenshots/` | Step-by-step screenshots of the work |
+| `1_orders.png` to `19_filtered.png` | Step-by-step screenshots of the work |
 | `README.md` | This file |
 
 ---
